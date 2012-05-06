@@ -1,6 +1,8 @@
 ---
 title: Updated the Scuttle Plugin for Firefox to FF 4
 layout: post
+tags: scuttle
+category: Open Source Projects
 ---
 
 I updated the Scuttle firefox plugin to work with Firefox 4.  This was the one utility that was holding me back from upgrading to Firefox 4.  I created a "github repository.":https://github.com/underhilllabs/Scuttle-Plugin-Firefox-4 for the project.  Feel free to fork the project.  Its a good simple plugin if you'd like to learn how to write one.

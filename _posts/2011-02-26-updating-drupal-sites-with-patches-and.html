@@ -1,3 +1,10 @@
+--- 
+layout: post
+title: Updating Drupal Sites with Patches and Drush
+tags: drupal drush
+category: Drupal
+---
+
 I found a couple of drupal sites on a web server that were badly in need of security updates.  They are no longer being maintained by a developer but they are still in use by a user community so I didn't like the idea of taking them down just because they are a security vulnerability, as they still have a great deal of value for people who use them.  So I decided to update them with the patches that are available at <a href="http://fuerstnet.de/en/drupal-upgrade-easier">fuerstnet</a>.  
 <p>
 If you follow the link above to fuerstnet, the site provides patches from all of the minor versions of drupal up to the most recent security level.  So, if you check your drupal site's status at "admin/reports/status" (in drupal 6).  And you see that you're drupal version is currently drupal 6.14. (That's 4 security releases out of date!)  Then you can go to fuerstnet and download the drupal-6.14-to-6.18.patch security fixes only patch, or you can download the 6.14-to-to-6.20.patch (which includes bug fixes + security fixes.).
