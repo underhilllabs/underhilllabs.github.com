@@ -1,0 +1,127 @@
+--- 
+name: updating-drupal-sites-with-patches-and
+layout: post
+title: Updating Drupal Sites with Patches and Drush
+time: 2011-02-26 11:06:00 -07:00
+---
+I found a couple of drupal sites on a web server that were badly in
+need of security updates.  They are no longer being maintained by a
+developer but they are still in use by a user community so I didn't
+like the idea of taking them down just because they are a security
+vulnerability, as they still have a great deal of value for people who
+use them.  So I decided to update them with the patches that are
+available at <a
+href="http://fuerstnet.de/en/drupal-upgrade-easier">fuerstnet</a>.
+<p>If you follow the link above to fuerstnet, the site provides
+patches from all of the minor versions of drupal up to the most recent
+security level.  So, if you check your drupal site's status at
+"admin/reports/status" (in drupal 6).  And you see that you're drupal
+version is currently drupal 6.14. (That's 4 security releases out of
+date!)  Then you can go to fuerstnet and download the
+drupal-6.14-to-6.18.patch security fixes only patch, or you can
+download the 6.14-to-to-6.20.patch (which includes bug fixes +
+security fixes.).<p>The first thing you need to do is make sure you
+have a current back-up of the database and the drupal file
+system.<p>1. Quick back-up of the file system:<br>
+
+{% highlight bash %}
+  cp -R DRUPAL_ROOT DRUPAL_ROOT-bk
+{% endhighlight %}
+
+<br>2. Copy of database:<br>
+
+{% highlight bash %}
+   mysqldump -uDB-USER -p DB-NAME > ~/DRUPAL-SITE-NAME.db-backup-DATE.sql
+{% endhighlight %}
+
+<p>or you can do the database back-up with drush:<br>
+
+{% highlight bash %}
+ drush sql-dump --result-file=~/DRUPAL-SITE-NAME.db_backup-DATE.sql
+{% endhighlight %}
+
+<br>Of course, you need to replace all of the ALL_CAPS names up above with the names
+that correspond with your site.  Now on to the update procedure:<p>The
+procedure, as outlined at fuerstnet, is:<br>
+
+1. copy the patch into you're drupal root directory.
+
+2. put your site into maintenance 
+mode. "admin/settings/site-maintenance" (in drupal 6)<br>3. cd into
+the DRUPAL_ROOT directory.<br>4. patch -p1 --dry-run < DRUPALPATCH
+<br>(replace DRUPALPATCH with the name of your patch, ie
+drupal-6.14-to-6.20.patch)if you do not see any errors in the output
+of the patch command, then you can run the command again for
+real.<br>5. patch -p1 < DRUPALPATCH  <br>Next you have to run
+update.php, which if you have drush you can run like so:<br>6. drush
+updatedb<br>or you can visit
+http://YOUR-DRUPAL-SITE/update.php<br>7. next: test your site, update
+any modules that need updating and then don't forget to pull your site
+out of maintenance mode.<p>Another possibility is to run the upgrades
+in drush with the shell command:<br>
+
+{% highlight bash %}
+drush pm-update --security-only
+{% endhighlight %}
+
+<p>This command will update your site with any
+available security updates.  It will first show you a list of updates
+that are available and ask if you if you want to proceed.  You must
+answer y or n.  This command is great, because you can run it in the
+root directory of any of your drupal sites and it will show you which
+updates are available.  Also if you have site-aliases set up, you can
+run it against all of your aliases one at a time and you don't have to
+leave the comfort of your /home directory! <p>
+
+{% highlight bash %}
+drush @dev pm-update --security-only
+{% endhighlight %}
+
+<br>(where @dev is an alias name for one of your sites.)<p>Of course
+you can run the update command without the --security-only and it will
+offer to update all of your modules, themes and core drupal files.
+<p>[However I ran into trouble with this approach as it updated the
+themes as well on one of the sites I was updating and the original
+site developer had customized the theme instead of creating a new them
+and customizing that!  So I restore the theme from backup.  Of course
+when drush updates modules and themes it backs up the old ones in a
+directory outside the drupal directory, so if there is a mishap, such
+as overwriting a customized theme, you can restore and clear cache to
+restore the old theme.  Although there is that safety net, I still now
+prefer to update security-fixes only at first, and then run
+non-security modules fixes one at a time and run the theme fixes
+manually.  Schwew, big aside.]<p>After running the
+
+{% highlight bash %}
+drush pm-update
+{% endhighlight %}
+
+which can be shortened to
+
+{% highlight bash %}
+drush up
+{% endhighlight %}
+
+I like to run a quick:<br>
+
+{% highlight bash %}
+drush updatedb
+{% endhighlight %}
+
+to make sure the database has been updated properly, and:
+
+{% highlight bash %}
+drush cc all
+{% endhighlight %}
+
+<br>to make sure the caches are cleared.
+<p>And once you have all of your sites aliased, it is simple to ssh
+into your web server and run the
+
+{% highlight bash %}
+drush up --security-only
+{% endhighlight %}
+
+command once a week to check that all of your sites are up to date
+with the security fixes.
+<p>
