@@ -6,7 +6,8 @@ category: Systems Administration
 ---
 
 I was printing out the sizes of different databases and trying to sum them.  The command I was using was:
-<pre >
+
+{% highlight bash %}
 $ du -s /var/lib/mysql/* | sort n
 ...
 6040    u_labs2
@@ -16,7 +17,7 @@ $ du -s /var/lib/mysql/* | sort n
 23044   drupaldbc1
 84896   managingnews0
 248056  ibdata1
-</pre>
+{% endhighlight %}
 
 This prints out a two column list of files sizes and file names.  I wanted to turn this into a csv.  What is the best way to do this?  AWK of course.
 

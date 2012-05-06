@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Latest Posts
-tagline: Drupal and Android Development
 ---
 
 <ul class="posts">
