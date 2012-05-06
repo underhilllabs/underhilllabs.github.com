@@ -28,9 +28,9 @@ I was finally able to match the headline in vim with the following regular expre
 
 <h2>Vim Substitution Expression</h2>
 
-<pre><code class="vim">
+<pre>
 %s/\*\*\* \(\(w*\).*\)/&lt;h3&gt;\1&lt;\/h3&gt;/
-</code></pre>
+</pre>
 <li> The % matches the entire file
 <li>The \1 matches the first matching group in the search string
 That is, \1 will match everything on the line after the 3 literal asterisks.
