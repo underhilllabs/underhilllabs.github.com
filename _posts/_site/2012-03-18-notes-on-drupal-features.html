@@ -1,9 +1,3 @@
----
-layout: post
-title: Notes on Drupal Features
-tags: drupal
-category: Drupal
----
 One of the difficulties of keeping a Drupal website completely in version control, is that a lot of the configuration is stored in the database. Each change you make to a site via clicking and saving on a site administration page is saved in the database. It is difficult to keep a history of these changes without writing the entire database to a file and then checking that into version control. But you don't want to commit an entire database into git. This is where the Features module comes into play. It helps separate the site's configuration in the database from the site's content.
 
 The Features module allows you to export configuration options from the database into a new module.  Then you can check this new module into version control and keep track of the history of changes, and keep backups of a site's configuration that is separated from the site's content and database.

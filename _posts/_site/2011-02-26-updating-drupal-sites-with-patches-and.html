@@ -1,0 +1,99 @@
+<p>I found a couple of drupal sites on a web server that were badly in<br />
+need of security updates.  They are no longer being maintained by a<br />
+developer but they are still in use by a user community so I didn&#8217;t<br />
+like the idea of taking them down just because they are a security<br />
+vulnerability, as they still have a great deal of value for people who<br />
+use them.  So I decided to update them with the patches that are<br />
+available at <a
+href="http://fuerstnet.de/en/drupal-upgrade-easier">fuerstnet</a>.<br />
+<p>If you follow the link above to fuerstnet, the site provides<br />
+patches from all of the minor versions of drupal up to the most recent<br />
+security level.  So, if you check your drupal site&#8217;s status at<br />
+&#8220;admin/reports/status&#8221; (in drupal 6).  And you see that you&#8217;re drupal<br />
+version is currently drupal 6.14. (That&#8217;s 4 security releases out of<br />
+date!)  Then you can go to fuerstnet and download the<br />
+drupal-6.14-to-6.18.patch security fixes only patch, or you can<br />
+download the 6.14-to-to-6.20.patch (which includes bug fixes +<br />
+security fixes.).<p>The first thing you need to do is make sure you<br />
+have a current back-up of the database and the drupal file<br />
+system.<p>1. Quick back-up of the file system:<br></p>
+<div>
+<pre><code class='bash'>cp -R DRUPAL_ROOT DRUPAL_ROOT-bk</code></pre>
+</div>
+<p><br>2. Copy of database:<br></p>
+<div>
+<pre><code class='bash'>mysqldump -uDB-USER -p DB-NAME &amp;gt; ~/DRUPAL-SITE-NAME.db-backup-DATE.sql</code></pre>
+</div>
+<p>or you can do the database back-up with drush:<br>
+<br />
+<div><br />
+  <pre><code class='bash'>drush sql-dump --result-file=~/DRUPAL-SITE-NAME.db_backup-DATE.sql</code></pre></div>
+<p><br>Of course, you need to replace all of the ALL_CAPS names up above with the names<br />
+that correspond with your site.  Now on to the update procedure:<p>The<br />
+procedure, as outlined at fuerstnet, is:<br></p>
+<p>1. copy the patch into you&#8217;re drupal root directory.</p>
+<p>2. put your site into maintenance <br />
+mode. &#8220;admin/settings/site-maintenance&#8221; (in drupal 6)<br>3. cd into<br />
+the DRUPAL_ROOT directory.<br>4. patch -p1 &#8212;dry-run &lt; <span class="caps">DRUPALPATCH</span><br />
+<br>(replace <span class="caps">DRUPALPATCH</span> with the name of your patch, ie<br />
+drupal-6.14-to-6.20.patch)if you do not see any errors in the output<br />
+of the patch command, then you can run the command again for<br />
+real.<br>5. patch -p1 &lt; <span class="caps">DRUPALPATCH</span>  <br>Next you have to run<br />
+update.php, which if you have drush you can run like so:<br>6. drush<br />
+updatedb<br>or you can visit<br />
+http://<span class="caps">YOUR</span>-<span class="caps">DRUPAL</span>-<span class="caps">SITE</span>/update.php<br>7. next: test your site, update<br />
+any modules that need updating and then don&#8217;t forget to pull your site<br />
+out of maintenance mode.<p>Another possibility is to run the upgrades<br />
+in drush with the shell command:<br></p>
+<div>
+<pre><code class='bash'>drush pm-update --security-only</code></pre>
+</div>
+<p>This command will update your site with any<br />
+available security updates.  It will first show you a list of updates<br />
+that are available and ask if you if you want to proceed.  You must<br />
+answer y or n.  This command is great, because you can run it in the<br />
+root directory of any of your drupal sites and it will show you which<br />
+updates are available.  Also if you have site-aliases set up, you can<br />
+run it against all of your aliases one at a time and you don&#8217;t have to<br />
+leave the comfort of your /home directory! <p><br />
+<br />
+<div><br />
+  <pre><code class='bash'>drush @dev pm-update --security-only</code></pre></div>
+<p><br>(where @dev is an alias name for one of your sites.)<p>Of course<br />
+you can run the update command without the &#8212;security-only and it will<br />
+offer to update all of your modules, themes and core drupal files.<br />
+<p>[However I ran into trouble with this approach as it updated the<br />
+themes as well on one of the sites I was updating and the original<br />
+site developer had customized the theme instead of creating a new them<br />
+and customizing that!  So I restore the theme from backup.  Of course<br />
+when drush updates modules and themes it backs up the old ones in a<br />
+directory outside the drupal directory, so if there is a mishap, such<br />
+as overwriting a customized theme, you can restore and clear cache to<br />
+restore the old theme.  Although there is that safety net, I still now<br />
+prefer to update security-fixes only at first, and then run<br />
+non-security modules fixes one at a time and run the theme fixes<br />
+manually.  Schwew, big aside.]<p>After running the</p>
+<div>
+<pre><code class='bash'>drush pm-update</code></pre>
+</div>
+<p>which can be shortened to</p>
+<div>
+<pre><code class='bash'>drush up</code></pre>
+</div>
+<p>I like to run a quick:<br></p>
+<div>
+<pre><code class='bash'>drush updatedb</code></pre>
+</div>
+<p>to make sure the database has been updated properly, and:</p>
+<div>
+<pre><code class='bash'>drush cc all</code></pre>
+</div>
+<p><br>to make sure the caches are cleared.<br />
+<p>And once you have all of your sites aliased, it is simple to ssh<br />
+into your web server and run the</p>
+<div>
+<pre><code class='bash'>drush up --security-only</code></pre>
+</div>
+<p>command once a week to check that all of your sites are up to date<br />
+with the security fixes.<br />
+<p></p>
