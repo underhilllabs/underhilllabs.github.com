@@ -77,11 +77,11 @@ category: Vim
 
 
 
-<pre class="example">attrcolor b ".I"
+{ highlight bash %}attrcolor b ".I"
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce "on"
 term screen-256color-bce
-</pre>
+{% endhighlight %}
 
 
 </div>
@@ -95,7 +95,7 @@ term screen-256color-bce
 
 
 
-<pre class="example">" Colors!!
+{ highlight bash %}" Colors!!
 set t_Co=256
 
 " color theme
@@ -124,7 +124,7 @@ set statusline+=%r      "read only flag
 set statusline+=%m      "modified flag
 syntax on
 
-</pre>
+{% endhighlight %}
 
 
 </div>

@@ -15,8 +15,8 @@ category: Web Development
 
 
 
-<pre class="example">sudo apache2ctl graceful
-</pre>
+{ highlight bash %}sudo apache2ctl graceful
+{% endhighlight %}
 
 
 </div>
@@ -30,8 +30,8 @@ category: Web Development
 
 
 
-<pre class="example">sudo tail -f /var/log/apache2/error.log
-</pre>
+{ highlight bash %}sudo tail -f /var/log/apache2/error.log
+{% endhighlight %}
 
 
 </div>
@@ -52,8 +52,8 @@ category: Web Development
 
 
 
-<pre class="example">sudo vi /etc/apache2/sites-available/default
-</pre>
+{ highlight bash %}sudo vi /etc/apache2/sites-available/default
+{% endhighlight %}
 
 
 </div>
@@ -67,12 +67,12 @@ category: Web Development
 
 
 
-<pre class="example">&lt;VirtualHost *:80&gt;  
+{ highlight bash %}&lt;VirtualHost *:80&gt;  
   ServerName majorursa.net
   ServerAlias www.majorursa.net
   DocumentRoot /var/www/majorursalia/
 &lt;/VirtualHost&gt;   
-</pre>
+{% endhighlight %}
 
 
 </div>
@@ -86,7 +86,7 @@ category: Web Development
 
 
 
-<pre class="example">&lt;VirtualHost *:80&gt;  
+{ highlight bash %}&lt;VirtualHost *:80&gt;  
   ServerName majorursa.net
   ServerAlias www.majorursa.net
   DocumentRoot /var/www/majorursalia/drupal-6.22
@@ -97,7 +97,7 @@ category: Web Development
     Allow from all
   &lt;/Directory&gt; 
 &lt;/VirtualHost&gt;   
-</pre>
+{% endhighlight %}
 
 
 </div>

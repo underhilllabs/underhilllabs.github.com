@@ -23,12 +23,12 @@ This prints out a two column list of files sizes and file names.  I wanted to tu
 
 <h2>AWK to the Rescue</h2>
 This print just the file sizes:
-<pre >
+{ highlight bash %}
 $ du -s /var/lib/mysql/* | sort n | awk '{print $1}'
-</pre>
+{% endhighlight %}
 
 This prints the file name first, comma, file size:
-<pre>
+{ highlight bash %}
 $ du -s /var/lib/mysql/* | sort n | awk '{print $2 ", " $1}'
 
 u_labs2, 6040
@@ -38,10 +38,10 @@ statusnet1, 19664
 drupaldbc2, 23044
 managingnews0, 84896
 ibdata1, 248056
-</pre>
+{% endhighlight %}
 
 You can either cut and paste the output into a spread sheet or redirect it into a csv like so:
 
-<pre>
+{ highlight bash %}
 $ du -s /var/lib/mysql/* | sort n | awk '{print $2 ", " $1}' > db-sizes.csv
-</pre>
+{% endhighlight %}
