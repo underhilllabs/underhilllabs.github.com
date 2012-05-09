@@ -15,17 +15,17 @@ data tornados_1980s;
   * this limits input data to 1980s data;
   if 1980 <= year <= 1989;
 run;
-{ endhighlight %}
+{% endhighlight %}
 
 <li> IF .. IN statement
 {% highlight s %}
 if year in (1980, 1981, 1982);
-{ endhighlight %}
+{% endhighlight %}
 
 <li> AND, OR 
 {% highlight s %}
 if year = '1980' and city = 'Baltimore';
-{ endhighlight %} 
+{% endhighlight %} 
 
 
 <h3>infile 'filename'</h3>
@@ -35,7 +35,7 @@ data tornados;
   infile 'tornados.dat';
   input year city cost;
 run;
-{ endhighlight %}
+{% endhighlight %}
 
 <h3>Set </h3>
 <li> Use the set command to create a new data set from an already created
@@ -47,7 +47,7 @@ data tornados_1980s;
   set tornados;
   if 1980 <= year <= 1989;
 run;
-{ endhighlight %}
+{% endhighlight %}
 
 <h2>The PROC Step</h2>
 <h3>PROC SORT</h3>
@@ -59,7 +59,7 @@ proc sort data=tornados;
 proc print data=tornados;
   by year;
 run;
-{ endhighlight %}
+{% endhighlight %}
 
 <h3>PROC Univariate</h3>
 PROC Univariate generates descriptive statistics
@@ -67,7 +67,7 @@ PROC Univariate generates descriptive statistics
 proc univariate data=tornados;
   histogram year;
 run;
-{ endhighlight %}
+{% endhighlight %}
 
 <h3>PROC means</h3>
 Use proc means when you are only interested in basic descriptive statistics.
@@ -79,7 +79,7 @@ proc gplot data=tornados;
   plot year*cost;
   title 'Year by Cost tornados';
 run;
-{ endhighlight %}
+{% endhighlight %}
 
 <h3>PROC corr</h3>
 <h4>compute the correlation</h4>
@@ -87,7 +87,7 @@ run;
 proc corr data=grades;
   var exam1 exam2 hwscore;
 run;
-{ endhighlight %}
+{% endhighlight %}
 
 <h3>PROC reg</h3>
 <li> p: prints obs, predicted, residuals
@@ -99,7 +99,7 @@ proc reg data=grades;
   model final=exam1 hwscore / p r cli clm;
   plot final*hwscore;
 run;
-{ endhighlight %}
+{% endhighlight %}
 
 <h2>Multiple Regression Analysis</h2>
 <h3>Variable Selection</h3>
@@ -114,7 +114,7 @@ proc reg data=cdi;
   model y = x1-x8 /selection=stepwise slentry=0.10 slstay=0.10;
   model y = x1-x8 /selection=backward slstay=0.10;
 run;
-{ endhighlight %}
+{% endhighlight %}
 
 additional pages to try:
 <a href=http://www.ats.ucla.edu/stat/sas/modules/graph.htm>more sas</a>

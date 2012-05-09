@@ -34,17 +34,17 @@ PING d7 (127.0.0.1) 56(84) bytes of data.
 
 <span style="font-weight:bold;">2. Edit your Apache config file</span>
 
-Add a &lt;VirtualHost&gt; entry for each of the test sites:
+Add a <VirtualHost&gt; entry for each of the test sites:
 <blockquote>
 {% highlight bash %}
-&lt;VirtualHost *:80&gt;
+<VirtualHost *:80&gt;
     ServerName d7
     DocumentRoot /home/bart/Public/drupal-7.x-dev
-&lt;/VirtualHost&gt;
-&lt;VirtualHost *:80&gt;
+</VirtualHost&gt;
+<VirtualHost *:80&gt;
     ServerName d6
     DocumentRoot /home/bart/Public/drupal-6.16
-&lt;/VirtualHost&gt;
+</VirtualHost&gt;
 {% endhighlight %}
 </blockquote>
 

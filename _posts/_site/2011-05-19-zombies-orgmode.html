@@ -1,51 +1,5 @@
-<a href="http://www.flickr.com/photos/redbike/5738522164/" title="Zombie Graph with Emacs and Graphviz by denverfiddler, on Flickr"><img src="http://farm3.static.flickr.com/2741/5738522164_058b838336.jpg" width="500" height="339" alt="Zombie Graph with Emacs and Graphviz"></a>
-
-<a href="http://www.flickr.com/photos/redbike/5738238466/" title="Zombie Apocalypse Digraph by denverfiddler, on Flickr"><img src="http://farm4.static.flickr.com/3280/5738238466_8320bfd478_o.png" width="293" height="379" alt="Zombie Apocalypse Digraph"></a>
-<p>
-I was playing around with <a href="http://www.graphviz.org/Gallery.php">Graphviz</a> inside <a href="http://orgmode.org/">orgmode</a> inside Emacs.
-
-Come the Zombie Apocalypse I'll be prepared, thanks to Emacs and Orgmode.
-
-Here's the Graphviz src:
-
-<code><pre>
-digraph D {
-  size="8,6"
-  node [shape = polygon,
-        sides = 4,
-        distortion = "0.0",
-        orientation = "0.0",
-        skew = "0.0",
-        color = "#aaaaaa",
-        style = filled,
-        fontname = "Helvetica-Outline" ];
-  apocalypse [sides=9 skew=".32" color="purple"]
-  apocalypse -> zombie
-  apocalypse -> zombies
-  shovel [skew=".56" color="#aa2222"]
-  subgraph singular {
-    label="one"
-    color=purple
-    zombie -> shovel [color="#440000"]
-    shovel -> run
-  }
-  run [sides=9, color=salmon2];
-  subgraph plural {
-    label="many"
-    color=red
-    zombies -> run [color="#00a4d4"]
-  }
-}
-</pre></code>
-
-save this file as zombies.gv, then run: graphviz zombies.gv.
-<br />
-If you are interested in graphviz, you can click on any graph in <a href="http://www.graphviz.org/Gallery.php">this gallery</a> and see the graphviz source for the graph.
-
-<p>
-
-I wrote the graph source first in Emacs in Orgmode 7.5.  Here's the src for experimenting with graphs in orgmode using the new <a href="http://j.mp/l6chaqorgmode.org/worg/org-contrib/babel/">org-babel</a>, which lets you evaluate code in special code sections right inside of Emacs:
-<code><pre>
+layout: post
+{% highlight dot %}
 #+begin_src dot :file digraph2.png :cmdline -Kdot -Tpng  
 digraph D {
   size="8,6"
@@ -75,7 +29,7 @@ digraph D {
   }
 }
 #+end_src
-</pre></code>
+{% endhighlight %}
 
 Then inside the buffer you can evaluate the code with "C-c C-c", and you can see the results of evaluating the code with "C-c C-o".
 

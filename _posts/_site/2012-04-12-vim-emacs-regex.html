@@ -1,19 +1,22 @@
 So, I was trying to convert an orgmode file to html. There is an orgmode-export-as-html function, but it was choking on something, so I needed to do the conversion by hand. I tried many, many times to convert the file with emacs regular expressions, but was unsuccessful.  The difficulty was the orgmode headlines, which look like this:
 
-<pre>
-*** Use the sort function
-</pre>
+<div>
+  <pre><code class='bash'>*** Use the sort function</code></pre>
+</div>
+
 
 I wanted to simply transform this into 
-<pre>
-&lt;h3&gt;Use the sort function&lt;/h3&gt;
-</pre>
+<div>
+  <pre><code class='bash'>&lt;h3&amp;gt;Use the sort function&lt;/h3&amp;gt;</code></pre>
+</div>
+
 
 <h2>Vim Regexp</h2>
 I was finally able to match the headline in vim with the following regular expression: 
-<pre><code src="vim">
-\*\*\* \(\(w*\).*\)
-</code></pre>
+<div>
+  <pre><code class='bash'>\*\*\* \(\(w*\).*\)</code></pre>
+</div>
+
 
 <li> The literal asterisks had to be matched with \*.  
 <li> Next, to match to the end of the line I used: \(\(w*\).*\) 
@@ -22,18 +25,20 @@ I was finally able to match the headline in vim with the following regular expre
 
 <h2>Vim Substitution Expression</h2>
 
-<pre><code class="vim">
-%s/\*\*\* \(\(w*\).*\)/&lt;h3&gt;\1&lt;\/h3&gt;/
-</code></pre>
+<div>
+  <pre><code class='bash'>%s/\*\*\* \(\(w*\).*\)/&lt;h3&amp;gt;\1&lt;\/h3&amp;gt;/</code></pre>
+</div>
+
 <li> The % matches the entire file
 <li>The \1 matches the first matching group in the search string
 That is, \1 will match everything on the line after the 3 literal asterisks.
 
 <h2>Testing Matching String</h2>
 Its easy to test a regular expression in vim.  While in command mode (hit Esc if you are in input mode), type a / and then type your regular expression and then press "return", like so:
-<pre>
-/\*\*\* [RETURN]
-</pre>
+<div>
+  <pre><code class='bash'>/\*\*\* [RETURN]</code></pre>
+</div>
+
 
 Your matches will be highlighted.  Click 'n' to jump to the next match.
 

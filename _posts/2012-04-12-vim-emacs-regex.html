@@ -12,7 +12,7 @@ So, I was trying to convert an orgmode file to html. There is an orgmode-export-
 
 I wanted to simply transform this into 
 {% highlight bash %}
-&lt;h3&gt;Use the sort function&lt;/h3&gt;
+<h3&gt;Use the sort function</h3&gt;
 {% endhighlight %}
 
 <h2>Vim Regexp</h2>
@@ -29,7 +29,7 @@ I was finally able to match the headline in vim with the following regular expre
 <h2>Vim Substitution Expression</h2>
 
 {% highlight bash %}
-%s/\*\*\* \(\(w*\).*\)/&lt;h3&gt;\1&lt;\/h3&gt;/
+%s/\*\*\* \(\(w*\).*\)/<h3&gt;\1<\/h3&gt;/
 {% endhighlight %}
 <li> The % matches the entire file
 <li>The \1 matches the first matching group in the search string

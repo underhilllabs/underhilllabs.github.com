@@ -1,6 +1,7 @@
 I was printing out the sizes of different databases and trying to sum them.  The command I was using was:
-<pre >
-$ du -s /var/lib/mysql/* | sort n
+
+<div>
+  <pre><code class='bash'>$ du -s /var/lib/mysql/* | sort n
 ...
 6040    u_labs2
 7632    dnvtech3
@@ -8,20 +9,22 @@ $ du -s /var/lib/mysql/* | sort n
 19664   statusnet2
 23044   drupaldbc1
 84896   managingnews0
-248056  ibdata1
-</pre>
+248056  ibdata1</code></pre>
+</div>
+
 
 This prints out a two column list of files sizes and file names.  I wanted to turn this into a csv.  What is the best way to do this?  AWK of course.
 
 <h2>AWK to the Rescue</h2>
 This print just the file sizes:
-<pre >
-$ du -s /var/lib/mysql/* | sort n | awk '{print $1}'
-</pre>
+<div>
+  <pre><code class='bash'>$ du -s /var/lib/mysql/* | sort n | awk '{print $1}'</code></pre>
+</div>
+
 
 This prints the file name first, comma, file size:
-<pre>
-$ du -s /var/lib/mysql/* | sort n | awk '{print $2 ", " $1}'
+<div>
+  <pre><code class='bash'>$ du -s /var/lib/mysql/* | sort n | awk '{print $2 &quot;, &quot; $1}'
 
 u_labs2, 6040
 dnvtech3, 7632
@@ -29,11 +32,13 @@ courtwatch1, 7828
 statusnet1, 19664
 drupaldbc2, 23044
 managingnews0, 84896
-ibdata1, 248056
-</pre>
+ibdata1, 248056</code></pre>
+</div>
+
 
 You can either cut and paste the output into a spread sheet or redirect it into a csv like so:
 
-<pre>
-$ du -s /var/lib/mysql/* | sort n | awk '{print $2 ", " $1}' > db-sizes.csv
-</pre>
+<div>
+  <pre><code class='bash'>$ du -s /var/lib/mysql/* | sort n | awk '{print $2 &quot;, &quot; $1}' &gt; db-sizes.csv</code></pre>
+</div>
+

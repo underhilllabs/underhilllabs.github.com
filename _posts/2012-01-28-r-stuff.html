@@ -75,10 +75,10 @@ tables[[2]]
 
 {% highlight r %}
 # x is a vector with values 1 2 3 4 5
-x &lt;- 1:5
+x <- 1:5
 
 # create a function
-square &lt;- function(x) {
+square <- function(x) {
   x^2
 }
   
@@ -103,7 +103,7 @@ square(x)
 </div>
 
 <div id="outline-container-2-2-1" class="outline-4">
-<h4 id="sec-2-2-1">getting help with ?&lt;command-name&gt;</h4>
+<h4 id="sec-2-2-1">getting help with ?<command-name&gt;</h4>
 <div class="outline-text-4" id="text-2-2-1">
 
 <ul>
@@ -145,11 +145,11 @@ hist(faithful$waiting,breaks=25)
 
 
 {% highlight r %}
-dat &lt;- read.table("thedata.txt", sep=":")
+dat <- read.table("thedata.txt", sep=":")
 # space delimited, also first line is a header
-dat2 &lt;- read.table("thedata.txt", header=TRUE)
+dat2 <- read.table("thedata.txt", header=TRUE)
 # csv
-dat &lt;- read.csv("thedata.csv")
+dat <- read.csv("thedata.csv")
 print(dat)
 {% endhighlight %}
 
@@ -171,7 +171,7 @@ print(dat)
 
 
 {% highlight r %}
-> nums &lt;- scan()
+> nums <- scan()
 1: 75  48  61  48 150  49  57  39  27  51  46  50  62  51
 15: 
 Read 14 items
@@ -189,7 +189,7 @@ Read 14 items
 
 {% highlight r %}
   
-  nums &lt;- scan(textConnection("75 48 61 48 150 49 57 39 27 51 46 50 62 51 50 58 38 34 59 44 24 39 40 33 49 33 34 32 35 30 23 39 36 25 20 32 43 52 42 44 46 51 47 51 44 33 38"), sep=" ")
+  nums <- scan(textConnection("75 48 61 48 150 49 57 39 27 51 46 50 62 51 50 58 38 34 59 44 24 39 40 33 49 33 34 32 35 30 23 39 36 25 20 32 43 52 42 44 46 51 47 51 44 33 38"), sep=" ")
   median(nums)
   mean(nums)
   deaths <- nums[-5]
@@ -220,7 +220,7 @@ Read 14 items
   # Data pasted from another document can be placed in a vector
   #   via the following composition of functions
   # textConnection can also be used to read data from stdin
-  nums &lt;- scan(textConnection("75 48 61 48 150 49 57 39 27 51 46 50 62 51 50 58 38 34 59 44 24 39 40 33 49 33 34 32 35 30 23 39 36 25 20 32 43 52 42 44 46 51 47 51 44 33 38"), sep=" ")
+  nums <- scan(textConnection("75 48 61 48 150 49 57 39 27 51 46 50 62 51 50 58 38 34 59 44 24 39 40 33 49 33 34 32 35 30 23 39 36 25 20 32 43 52 42 44 46 51 47 51 44 33 38"), sep=" ")
   hist(nums, main="US Lightning Death's 1959-2005")
 {% endhighlight %}
 
@@ -271,7 +271,7 @@ mean(airmiles,trim=0.5)
 {% highlight r %}
 library(Devore7)
 plot(ex12.59)
-my.reg &lt;- lm (ex12.59$y ~ ex12.59$x)
+my.reg <- lm (ex12.59$y ~ ex12.59$x)
 abline(my.reg)
 {% endhighlight %}
 
@@ -332,7 +332,7 @@ on each value and returns the vector of return values.
 <div class="outline-text-4" id="text-2-11-3">
 
 <p>This function returns the cumulative distribution function of
-P(x&lt;4) of X~poisson(5).   
+P(x<4) of X~poisson(5).   
 {% highlight r %}
 Reduce("+",Map(function(u){exp(-5)*5^u/factorial(u)},0:3))
 {% endhighlight %}
@@ -384,7 +384,7 @@ length(m.100)*sum((m.100-mean(m.100))^2)+length(m.125)*sum((m.125-mean(m.125))^2
 {% highlight r %}
 ### b.1,b.2, b.3, b.4 are rows of values
 ### \Sigma (X_{ij} - X_{bar_dot})^2
-m.SSE &lt;- sum((b.1-mean(b.1))^2) + sum((b.2-mean(b.2))^2) + sum((b.3-mean(b.3))^2) + sum((b.4-mean(b.4))^2)
+m.SSE <- sum((b.1-mean(b.1))^2) + sum((b.2-mean(b.2))^2) + sum((b.3-mean(b.3))^2) + sum((b.4-mean(b.4))^2)
 
 {% endhighlight %}
 

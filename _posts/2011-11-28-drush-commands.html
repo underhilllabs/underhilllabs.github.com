@@ -35,7 +35,7 @@ drush @math status
 
 <h4 id="sec-3.1.1">Sync Dev Server with Staging Server </h4>
 
-{% highlight bash %}// drush core-rsync &lt;source&gt; &lt;destination&gt;
+{% highlight bash %}// drush core-rsync <source&gt; <destination&gt;
 drush core-rsync @dev @stage
 {% endhighlight %}
 
@@ -80,7 +80,7 @@ drush pushkey boris@badinoff.com
 
 
 
-{% highlight bash %}cd &lt;drush directory&gt;/commands/
+{% highlight bash %}cd <drush directory&gt;/commands/
 git clone https://github.com/scor/dgb.git
 {% endhighlight %}
 
@@ -101,7 +101,7 @@ git init
 
 
 
-{% highlight bash %}cd &lt;DRUPAL_ROOT&gt;
+{% highlight bash %}cd <DRUPAL_ROOT&gt;
 drush dgb-backup
 {% endhighlight %}
 
@@ -111,7 +111,7 @@ drush dgb-backup
 <p>The DGB instance directory is the directory up from your DRUPAL<sub>ROOT</sub>. 
 </p>
 
-<h4 id="sec-4.4.1">each site's db dump is in databases/&lt;site-name&gt;.sql </h4>
+<h4 id="sec-4.4.1">each site's db dump is in databases/<site-name&gt;.sql </h4>
 
 <p>Database dump for default is in databases/default.sql
 </p>
@@ -136,19 +136,19 @@ cd ../..
 # create a dev directory parallel to other site
 mkdir dev
 cd dev
-git clone &lt;path to dgb instance&gt;
+git clone <path to dgb instance&gt;
 # create a new branch called "my-dev-branch"
 git branch my-dev-branch
 # checkout the new dev branch
 git checkout my-dev-branch
 # now create a new database with the database dump
-# change &lt;dbuser&gt;, &lt;dbpasswd&gt;, &lt;devdbname&gt; and &lt;path-to-dgb-instance&gt;
+# change <dbuser&gt;, <dbpasswd&gt;, <devdbname&gt; and <path-to-dgb-instance&gt;
 # and also the substitute default.sql for the name of your databasedump
-mysql -u &lt;dbuser&gt; -p &lt;dbpasswd&gt; &lt;devdbname&gt; &lt; &lt;path-to-dgb-instance&gt;/databases/default.sql
+mysql -u <dbuser&gt; -p <dbpasswd&gt; <devdbname&gt; < <path-to-dgb-instance&gt;/databases/default.sql
 # now finally update settings.php to point to your dev database
 vim sites/default/settings.php
 # finally check that there is an .htaccess file in your new dev
-# &lt;DRUPAL_ROOT&gt; if not, copy it over from the cloned siteF
+# <DRUPAL_ROOT&gt; if not, copy it over from the cloned siteF
 {% endhighlight %}
 
 
@@ -161,7 +161,7 @@ vim sites/default/settings.php
 # The first time you sync you can use --include-conf option to copy settings.php.
 drush core-rsync @live @dev --include-conf
 # Next change database settings to use @dev database.
-vi &lt;document-root&gt;/sites/default/settings.php
+vi <document-root&gt;/sites/default/settings.php
 
 # After first sync use w/out --include-conf and it will preserve the existing settings.php.
 drush core-rsync @live @dev

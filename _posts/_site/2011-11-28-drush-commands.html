@@ -1,6 +1,7 @@
 <h3 id="sec-2">Basic Drush </h3>
 
-<pre class="example">// Download a module or theme
+<div>
+  <pre><code class='bash'>// Download a module or theme
 drush dl cck
 
 // Enable module or theme
@@ -16,8 +17,9 @@ drush help pm-update
 drush sa
 
 // Get status on particular site, via site-alias
-drush @math status
-</pre>
+drush @math status</code></pre>
+</div>
+
 
 
 
@@ -28,9 +30,11 @@ drush @math status
 
 <h4 id="sec-3.1.1">Sync Dev Server with Staging Server </h4>
 
-<pre class="example">// drush core-rsync &lt;source&gt; &lt;destination&gt;
-drush core-rsync @dev @stage
-</pre>
+<div>
+  <pre><code class='bash'>// drush core-rsync &lt;source&amp;gt; &lt;destination&amp;gt;
+drush core-rsync @dev @stage</code></pre>
+</div>
+
 
 
 
@@ -44,8 +48,10 @@ drush core-rsync @dev @stage
 <h4 id="sec-3.1.2">Download drush<sub>extras</sub> </h4>
 
 
-<pre class="example">drush dl drush_extras
-</pre>
+<div>
+  <pre><code class='bash'>drush dl drush_extras</code></pre>
+</div>
+
 
 
 <h4 id="sec-3.1.3">Drush pushkey </h4>
@@ -56,9 +62,11 @@ commands will use this public/private key for authentication.
 </p>
 
 
-<pre class="example">// okay substitute your username for "boris" and your server for "badinoff.com"
-drush pushkey boris@badinoff.com 
-</pre>
+<div>
+  <pre><code class='bash'>// okay substitute your username for &quot;boris&quot; and your server for &quot;badinoff.com&quot;
+drush pushkey boris@badinoff.com</code></pre>
+</div>
+
 
 <h2 id="sec-4">Drush Git Backup </h2>
 
@@ -73,30 +81,36 @@ drush pushkey boris@badinoff.com
 
 
 
-<pre class="example">cd &lt;drush directory&gt;/commands/
-git clone https://github.com/scor/dgb.git
-</pre>
+<div>
+  <pre><code class='bash'>cd &lt;drush directory&amp;gt;/commands/
+git clone https://github.com/scor/dgb.git</code></pre>
+</div>
+
 
 
 
 <h3 id="sec-4.2">Setup DGB for a site </h3>
-<pre class="example"># from DRUPAL_ROOT 
+<div>
+  <pre><code class='bash'># from DRUPAL_ROOT 
 # cd up one directory
 cd ..
 # create directory for backed up database
 mkdir databases
 # initialize a git repository
-git init
-</pre>
+git init</code></pre>
+</div>
+
 
 <h3 id="sec-4.3">Back up Site </h3>
 
 
 
 
-<pre class="example">cd &lt;DRUPAL_ROOT&gt;
-drush dgb-backup
-</pre>
+<div>
+  <pre><code class='bash'>cd &lt;DRUPAL_ROOT&amp;gt;
+drush dgb-backup</code></pre>
+</div>
+
 
 
 
@@ -104,7 +118,7 @@ drush dgb-backup
 <p>The DGB instance directory is the directory up from your DRUPAL<sub>ROOT</sub>. 
 </p>
 
-<h4 id="sec-4.4.1">each site's db dump is in databases/&lt;site-name&gt;.sql </h4>
+<h4 id="sec-4.4.1">each site's db dump is in databases/<site-name&gt;.sql </h4>
 
 <p>Database dump for default is in databases/default.sql
 </p>
@@ -113,56 +127,60 @@ drush dgb-backup
 
 
 
-<pre class="example"># from DRUPAL_ROOT cd into the DGB instance directory
+<div>
+  <pre><code class='bash'># from DRUPAL_ROOT cd into the DGB instance directory
 cd ..
 # see list of git commits
 git log
 # see what files have changed since last call to drush dgb-backup
-git status
-</pre>
+git status</code></pre>
+</div>
+
 
 
 <h3 id="sec-4.5">Clone the Site for development </h3>
 
-<pre class="example"># from DRUPAL_ROOT
+<div>
+  <pre><code class='bash'># from DRUPAL_ROOT
 cd ../..
 # create a dev directory parallel to other site
 mkdir dev
 cd dev
-git clone &lt;path to dgb instance&gt;
-# create a new branch called "my-dev-branch"
+git clone &lt;path to dgb instance&amp;gt;
+# create a new branch called &quot;my-dev-branch&quot;
 git branch my-dev-branch
 # checkout the new dev branch
 git checkout my-dev-branch
 # now create a new database with the database dump
-# change &lt;dbuser&gt;, &lt;dbpasswd&gt;, &lt;devdbname&gt; and &lt;path-to-dgb-instance&gt;
+# change &lt;dbuser&amp;gt;, &lt;dbpasswd&amp;gt;, &lt;devdbname&amp;gt; and &lt;path-to-dgb-instance&amp;gt;
 # and also the substitute default.sql for the name of your databasedump
-mysql -u &lt;dbuser&gt; -p &lt;dbpasswd&gt; &lt;devdbname&gt; &lt; &lt;path-to-dgb-instance&gt;/databases/default.sql
+mysql -u &lt;dbuser&amp;gt; -p &lt;dbpasswd&amp;gt; &lt;devdbname&amp;gt; &lt; &lt;path-to-dgb-instance&amp;gt;/databases/default.sql
 # now finally update settings.php to point to your dev database
 vim sites/default/settings.php
 # finally check that there is an .htaccess file in your new dev
-# &lt;DRUPAL_ROOT&gt; if not, copy it over from the cloned siteF
-</pre>
+# &lt;DRUPAL_ROOT&amp;gt; if not, copy it over from the cloned siteF</code></pre>
+</div>
+
 
 
 
 
 <h3 id="sec-4.6">Another Way to Copy @live to @dev </h3>
 
-<pre class="example">
-# Core-rsync copies all of the files from one site instance to another.
+<div>
+  <pre><code class='bash'># Core-rsync copies all of the files from one site instance to another.
 # The first time you sync you can use --include-conf option to copy settings.php.
 drush core-rsync @live @dev --include-conf
 # Next change database settings to use @dev database.
-vi &lt;document-root&gt;/sites/default/settings.php
+vi &lt;document-root&amp;gt;/sites/default/settings.php
 
 # After first sync use w/out --include-conf and it will preserve the existing settings.php.
 drush core-rsync @live @dev
 
 # Sync databases.
-drush sql-sync @live @dev
+drush sql-sync @live @dev</code></pre>
+</div>
 
-</pre>
 
 
 
