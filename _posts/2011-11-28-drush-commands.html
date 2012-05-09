@@ -7,7 +7,7 @@ category: Drupal
 
 <h3 id="sec-2">Basic Drush </h3>
 
-{ highlight bash %}// Download a module or theme
+{% highlight bash %}// Download a module or theme
 drush dl cck
 
 // Enable module or theme
@@ -35,7 +35,7 @@ drush @math status
 
 <h4 id="sec-3.1.1">Sync Dev Server with Staging Server </h4>
 
-{ highlight bash %}// drush core-rsync &lt;source&gt; &lt;destination&gt;
+{% highlight bash %}// drush core-rsync &lt;source&gt; &lt;destination&gt;
 drush core-rsync @dev @stage
 {% endhighlight %}
 
@@ -51,7 +51,7 @@ drush core-rsync @dev @stage
 <h4 id="sec-3.1.2">Download drush<sub>extras</sub> </h4>
 
 
-{ highlight bash %}drush dl drush_extras
+{% highlight bash %}drush dl drush_extras
 {% endhighlight %}
 
 
@@ -63,7 +63,7 @@ commands will use this public/private key for authentication.
 </p>
 
 
-{ highlight bash %}// okay substitute your username for "boris" and your server for "badinoff.com"
+{% highlight bash %}// okay substitute your username for "boris" and your server for "badinoff.com"
 drush pushkey boris@badinoff.com 
 {% endhighlight %}
 
@@ -80,14 +80,14 @@ drush pushkey boris@badinoff.com
 
 
 
-{ highlight bash %}cd &lt;drush directory&gt;/commands/
+{% highlight bash %}cd &lt;drush directory&gt;/commands/
 git clone https://github.com/scor/dgb.git
 {% endhighlight %}
 
 
 
 <h3 id="sec-4.2">Setup DGB for a site </h3>
-{ highlight bash %}# from DRUPAL_ROOT 
+{% highlight bash %}# from DRUPAL_ROOT 
 # cd up one directory
 cd ..
 # create directory for backed up database
@@ -101,7 +101,7 @@ git init
 
 
 
-{ highlight bash %}cd &lt;DRUPAL_ROOT&gt;
+{% highlight bash %}cd &lt;DRUPAL_ROOT&gt;
 drush dgb-backup
 {% endhighlight %}
 
@@ -120,7 +120,7 @@ drush dgb-backup
 
 
 
-{ highlight bash %}# from DRUPAL_ROOT cd into the DGB instance directory
+{% highlight bash %}# from DRUPAL_ROOT cd into the DGB instance directory
 cd ..
 # see list of git commits
 git log
@@ -131,7 +131,7 @@ git status
 
 <h3 id="sec-4.5">Clone the Site for development </h3>
 
-{ highlight bash %}# from DRUPAL_ROOT
+{% highlight bash %}# from DRUPAL_ROOT
 cd ../..
 # create a dev directory parallel to other site
 mkdir dev
@@ -156,7 +156,7 @@ vim sites/default/settings.php
 
 <h3 id="sec-4.6">Another Way to Copy @live to @dev </h3>
 
-{ highlight bash %}
+{% highlight bash %}
 # Core-rsync copies all of the files from one site instance to another.
 # The first time you sync you can use --include-conf option to copy settings.php.
 drush core-rsync @live @dev --include-conf

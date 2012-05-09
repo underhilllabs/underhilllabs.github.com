@@ -20,7 +20,7 @@ This will download a new module to your desktop with the configuration options s
 To revert a feature is to take the configuration options that are written in a custom feature module and override the database configuration.
 
 Revert a feature with drush
-{ highlight bash %}
+{% highlight bash %}
 drush features-revert  mu_bartik_theme
 {% endhighlight %}
 
@@ -30,7 +30,7 @@ The above code would read the configuration options from the code in the mu_bart
 To override a feature, means to take the configuration that is currently in the database and use those options to override the previous custom feature module you created. This basically updates the old feature module with what is currently live on the site and in the database. Then you will be able to download an updated feature module and can commit this new change to your git repository so you have a history of site changes, upload the changed feature module <b>mu_bartik_theme</b> to your site and (ahem revert the change again).
 
 Here's the drush command to override a feature
-{ highlight bash %}
+{% highlight bash %}
 drush features-override mu_bartik_theme
 {% endhighlight %}
 

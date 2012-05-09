@@ -9,7 +9,7 @@ These are the steps, using git mostly, needed to work on an issue from the drupa
 <h2>First Time: Clone Drupal Core</h2>
 
 cd into your development folder and git clone drupal core, (in this case, I'm working on a drupal 8 issue).
-{ highlight bash %}
+{% highlight bash %}
 cd ~/projects/
 git clone --branch 8.x http://git.drupal.org/project/drupal.git drupal-8.x
 cd drupal-8.x
@@ -18,7 +18,7 @@ cd drupal-8.x
 <h2>Later, Refresh Repository with Git Pull</h2>
 After you've already cloned a copy of drupal for testing and development, all you have to do is run "git refresh" to update your copy.
 
-{ highlight bash %}
+{% highlight bash %}
 cd ~/projects/drupal-8.x/
 git checkout 8.x
 git pull
@@ -29,18 +29,18 @@ This will download the most recent commits to drupal-core from the central git r
 <h2>Create a topic branch for your issue</h2>
 
 Its a good idea to do development work in a separate development branch.  The following creates a new branch and checks the new branch out, so any subsequent changes will be made to that branch.
-{ highlight bash %}
+{% highlight bash %}
 git branch fix-typo
 git checkout fix-typo
 {% endhighlight %}
 
 To list all of the branches, run:
-{ highlight bash %}
+{% highlight bash %}
 git branch
 {% endhighlight %}
 
 git will show all of your branches, and it will star the current branch
-{ highlight bash %}
+{% highlight bash %}
   8.x
   * fix-typo
     profile-docs
@@ -53,36 +53,36 @@ git will show all of your branches, and it will star the current branch
     With git, you can work without fear! if you foul things up, getting back to a previous state is easy with <em>git reset</em>. 
 
     The following command will return the state of your code to that of the last commit.
-    { highlight bash %}
+    {% highlight bash %}
     git reset HEAD --hard
     {% endhighlight %}
 
     Also, if the last good state was a few commits ago, you can reset the current state to a previous commit with
-    { highlight bash %}
+    {% highlight bash %}
     git reset  00581a73afab6 --hard
     {% endhighlight %}
     where 00581a73afab6 is the SHA1 of the commit you want you working directory reset to.
 
     to find previous commits and their SHA1's, run git log:
-    { highlight bash %}
+    {% highlight bash %}
     git log
     {% endhighlight %}
     This will give a listing of the entire commit history.  You can travel back in time!  
 
     To see what files have changed since the last commit, run:
-    { highlight bash %}
+    {% highlight bash %}
     git status
     {% endhighlight %}
     This will show which files have been modified. 
 
     To see what the actual changes are, run:
-    { highlight bash %}
+    {% highlight bash %}
     git diff HEAD
     {% endhighlight %}
 
     <h2>Stage and Commit Changes</h2>
     Once you have some changes that you'd like to preserve, you first stage them to the index:
-    { highlight bash %}
+    {% highlight bash %}
     git add thefile.ext
     {% endhighlight %}
 
@@ -90,7 +90,7 @@ git will show all of your branches, and it will star the current branch
 
     <h2>Commit changes</h2> 
     Now that your changes are staged, it is time to commit them:
-    { highlight bash %}
+    {% highlight bash %}
     git commit
     {% endhighlight %}
     This will open your default editor, so you can write a descriptive commit message.
@@ -99,20 +99,20 @@ git will show all of your branches, and it will star the current branch
     Now that your changes have been made and committed, its time to create a patch that you attach to the drupal issue queue.
 
     First switch back to the 8.x branch:
-    { highlight bash %}
+    {% highlight bash %}
     git checkout 8.x
     {% endhighlight %}
 
     Next, create a patch with git diff. Drupal has a specific naming convention for patches ([module_name]-[short-description]-[issue-number]-[comment-number].patch).  In the case of a patch for drupal core, this can be shortened to [short-description]-[issue-number]-[comment-number].patch
 
     The following git diff command will print out all of the difference between the current branch (8.x) and the listed branch (fix-typo):
-    { highlight bash %}
+    {% highlight bash %}
     git diff fix-typo > fix_typo_in_bartik_css-902839-1.patch
     {% endhighlight %}
 
     <h2>Use git format-patch to include committer information</h2>
     Alternatively, you can use the git format-patch command to include the committer information in the patch:
-    { highlight bash %}
+    {% highlight bash %}
     git format-patch origin/master fix-typo > fix_typo_in_bartik_css-902839-1.patch
     {% endhighlight %}
 

@@ -6,18 +6,18 @@ category: Vim
 ---
 So, I was trying to convert an orgmode file to html. There is an orgmode-export-as-html function, but it was choking on something, so I needed to do the conversion by hand. I tried many, many times to convert the file with emacs regular expressions, but was unsuccessful.  The difficulty was the orgmode headlines, which look like this:
 
-{ highlight bash %}
+{% highlight bash %}
 *** Use the sort function
 {% endhighlight %}
 
 I wanted to simply transform this into 
-{ highlight bash %}
+{% highlight bash %}
 &lt;h3&gt;Use the sort function&lt;/h3&gt;
 {% endhighlight %}
 
 <h2>Vim Regexp</h2>
 I was finally able to match the headline in vim with the following regular expression: 
-{ highlight bash %}
+{% highlight bash %}
 \*\*\* \(\(w*\).*\)
 {% endhighlight %}
 
@@ -28,7 +28,7 @@ I was finally able to match the headline in vim with the following regular expre
 
 <h2>Vim Substitution Expression</h2>
 
-{ highlight bash %}
+{% highlight bash %}
 %s/\*\*\* \(\(w*\).*\)/&lt;h3&gt;\1&lt;\/h3&gt;/
 {% endhighlight %}
 <li> The % matches the entire file
@@ -37,7 +37,7 @@ That is, \1 will match everything on the line after the 3 literal asterisks.
 
 <h2>Testing Matching String</h2>
 Its easy to test a regular expression in vim.  While in command mode (hit Esc if you are in input mode), type a / and then type your regular expression and then press "return", like so:
-{ highlight bash %}
+{% highlight bash %}
 /\*\*\* [RETURN]
 {% endhighlight %}
 

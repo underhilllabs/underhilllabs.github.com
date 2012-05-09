@@ -14,50 +14,50 @@ Here are the steps:
 1: download the <a href=http://www.multiupload.com/U0Y5IVLL7D>nook 1.2 soft-root image</a> from <a href=http://nookdevs.com>nookdevs</a>.  For the rest of this post I assume you have copied it into the directory ~/nook_dev/ and we will be working on it from there. 
 
 <span style="font-weight:bold;">2. extract the bravo_update.dat</span>, cd into it and extract root.tgz
-{ highlight bash %}
+{% highlight bash %}
 mv bravo_update.dat bravo_update-1.2.tar.gz
 tar xvzf bravo_update-1.2.tar.gz
 {% endhighlight %}
 
 <span style="font-weight:bold;">3. extract root.tgz</span>
-{ highlight bash %}
+{% highlight bash %}
 cd Firmware_Update
 tar xvzf root.tgz
 cd root
 {% endhighlight %}
 
 <span style="font-weight:bold;">4. cd into system/framework and unjar services.jar </span>
-{ highlight bash %}
+{% highlight bash %}
 cd system/framework/
 jar xvf services.jar
 {% endhighlight %}
 
 5. disassemble the classes.dex file inside services.jar
-{ highlight bash %}baksmali classes.dex{% endhighlight %}
+{% highlight bash %}baksmali classes.dex{% endhighlight %}
 
 6. vi out/com/android/server/ServerThread.smali
 search for a line that contains 
-{ highlight bash %}
+{% highlight bash %}
 if-lt v0, v1, :cond_309
 {% endhighlight %}
 delete that line.
 
 
 7. reassemble out/ directory
-{ highlight bash %}
+{% highlight bash %}
 smali out/
 {% endhighlight %}
 
 
 8. copy the new out.dex over the old classes.dex and re-jar services.jar
-{ highlight bash %}
+{% highlight bash %}
 mv out.dex classes.dex
 jar cvf services.jar classes.dex
 {% endhighlight %}
 
 <h4>Now we are going to build an android AVD, so we can extract a single file to use back in this system.</h4>
 <span style="font-weight:bold;">9. if your android SDK tools are in your path Run</span>,
-{ highlight bash %}android{% endhighlight %}
+{% highlight bash %}android{% endhighlight %}
 else find the android command and run it, or run it from eclipse.
 
 This starts the Android SDK and AVD Manager.  To create a new AVD, click New...
@@ -69,7 +69,7 @@ click "Create AVD".
 Then click "Details" to see where it was created.  It should be at ~/.android/avd/nook.avd
 
 <span style="font-weight:bold;">10. unyaffs the system.img and grab a file</span>
-{ highlight bash %}
+{% highlight bash %}
 cd ~/nook_dev/
 mkdir sys_img
 cd sys_img
@@ -79,19 +79,19 @@ cp lib/libaudioflinger.so ~/nook_dev/Firmware_Update/Firmware_Update/system/lib/
 {% endhighlight %}
 
 <span style="font-weight:bold;">11. re-create the system.img with the new audio file.</span>
-{ highlight bash %}
+{% highlight bash %}
 cd ~/nook_dev/Firmware_Update/Firmware_Update/
 mkyaffs2image ./system/ system.img
 {% endhighlight %} this creates a new system.img
 
 <span style="font-weight:bold;">12. Sketchy step where you overwrite the good Android 1.5 platform system.img in your Android SDK with this new one.</span>
-{ highlight bash %}
+{% highlight bash %}
 mv ~/android-sdk-linux_86/platforms/android-3/images/system.img ~/android-sdk-linux_86/platforms/android-3/images/good.img 
 cp ~/nook_dev/Firmware_Update/Firmware_Update/system.img ~/android-sdk-linux_86/platforms/android-3/images/system.img 
 {% endhighlight %}
 <span style="font-weight:bold;">Remember to change this back later if you want to do non-nook related Android Development.</span>
 
 <span style="font-weight:bold;">13. run the emulator!</span>
-{ highlight bash %}
+{% highlight bash %}
 emulator @nook -shell -show-kernel -verbose
 {% endhighlight %}<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/7035860407900002000-5212169985789570108?l=denverdroid.blogspot.com' alt='' /></div>

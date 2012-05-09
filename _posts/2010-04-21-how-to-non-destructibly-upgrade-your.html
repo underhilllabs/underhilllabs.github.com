@@ -17,7 +17,7 @@ The function we will concentrate on in this post is onUpgrade().  This function 
 
 <blockquote>
 <span style="font-weight: bold;">
-{ highlight bash %}
+{% highlight bash %}
 public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     ...
     db.execSQL("DROP TABLE IF EXISTS albums");
@@ -33,7 +33,7 @@ The solution, is to check for the app's Database Version and make a call to our 
 
 <blockquote>
 <span style="font-weight: bold;">
-{ highlight bash %}
+{% highlight bash %}
 public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
    if(oldVersion == 2) {
           db.execSQL("ALTER TABLE albums ADD COLUMN hip_again integer");
@@ -50,7 +50,7 @@ There! Now your user's can flag their old CD's with the shifting tides of what's
 
 <blockquote>
 <span style="font-weight: bold;">
-{ highlight bash %}
+{% highlight bash %}
 private static final String DATABASE_CREATE =
           "create table albums (_id integer primary key autoincrement, "
           ...

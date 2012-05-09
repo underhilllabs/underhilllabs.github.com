@@ -9,18 +9,18 @@ I have a large mysqldump backup file of all databases on a server but I need a s
 
 1. I opened the dump file and a newly created file for the single database:
 
-{ highlight bash %}
+{% highlight bash %}
 vim db-dump.sql newdumpfile.sql
 {% endhighlight %}
 
 2. I searched for the start of the database section by searching for:
-{ highlight bash %}
+{% highlight bash %}
 /USE `databasename`
 {% endhighlight %}
 where "databasename" is the specific database I want to grab.
 
 3. Once I was at the correct spot in the database dump I noticed that each individual database section starts with a comment:
-{ highlight bash %}
+{% highlight bash %}
 ---
 --- Current Database: `databasename`
 --- 
@@ -28,14 +28,14 @@ where "databasename" is the specific database I want to grab.
 Once again, "databasename" is a specific database name.
 
 4. So I yanked all lines until the next database section with the following vim command:
-{ highlight bash %}
+{% highlight bash %}
 y/Current Database/
 {% endhighlight %}
 
 This tells vim to yank all lines until it reaches the next match for the regular expression "Current Database".  Vim will report how many lines have been yanked.
 
 5. Next, switch to the new file and paste the lines that were yanked.
-{ highlight bash %}
+{% highlight bash %}
 :bn
 p
 {% endhighlight %}
@@ -45,6 +45,6 @@ The vim command :bn, means switch to the next buffer.  You could also run the co
 6. Finally save the changes to the new file with :wq
 
 7. If you'd like to reload the database into mysql use the following:
-{ highlight bash %}
+{% highlight bash %}
 mysql -p &lt; newdumpfile.sql
 {% endhighlight %}
