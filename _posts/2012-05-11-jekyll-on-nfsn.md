@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Using Jekyll on NearlyFreeSpeech.net
-tags: jekyll, webdev
+tags: jekyll webdev
 category: Web Development
 ---
 
@@ -117,6 +117,6 @@ Next, push it to your website on nfsn.
 git push nfsn master
 {% endhighlight %} 
 
-The post-receive you created will generate your public jekyll website automatically.
+The post-receive script you created earlier will generate your new public jekyll website automatically.
 
 Test it and enjoy!
