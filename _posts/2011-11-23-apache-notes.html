@@ -15,7 +15,8 @@ category: Web Development
 
 
 
-{% highlight bash %}sudo apache2ctl graceful
+{% highlight bash %}
+sudo apache2ctl graceful
 {% endhighlight %}
 
 
@@ -30,7 +31,8 @@ category: Web Development
 
 
 
-{% highlight bash %}sudo tail -f /var/log/apache2/error.log
+{% highlight bash %}
+sudo tail -f /var/log/apache2/error.log
 {% endhighlight %}
 
 
@@ -52,7 +54,8 @@ category: Web Development
 
 
 
-{% highlight bash %}sudo vi /etc/apache2/sites-available/default
+{% highlight bash %}
+sudo vi /etc/apache2/sites-available/default
 {% endhighlight %}
 
 
@@ -67,7 +70,7 @@ category: Web Development
 
 
 
-{% highlight bash %}<VirtualHost *:80&gt;  
+{% highlight bash %}<VirtualHost *:80>
   ServerName majorursa.net
   ServerAlias www.majorursa.net
   DocumentRoot /var/www/majorursalia/
@@ -86,17 +89,17 @@ category: Web Development
 
 
 
-{% highlight bash %}<VirtualHost *:80&gt;  
+{% highlight bash %}<VirtualHost *:80>  
   ServerName majorursa.net
   ServerAlias www.majorursa.net
   DocumentRoot /var/www/majorursalia/drupal-6.22
-  <Directory /var/www/majorursalia/drupal-6.22/&gt;
+  <Directory /var/www/majorursalia/drupal-6.22/>
     AllowOverride All
     Options None
     Order allow,deny
     Allow from all
-  </Directory&gt; 
-</VirtualHost&gt;   
+  </Directory>
+</VirtualHost>
 {% endhighlight %}
 
 
