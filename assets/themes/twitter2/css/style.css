@@ -6,9 +6,16 @@ html, body {
 /* BWL added 5-13-2012 */
 p {
    line-height: 1.6em;
-   font-size: 1em;
-   font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+   font-size: 1.2em;
+   /* font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif; */
+   /* font-family: Verdana, Arial, sans-serif; */
+   font-family: Georgia, Times, serif;
 }
+h1, h2, h3 {
+   padding-top: 15px;
+   padding-bottom: 15px;
+}
+
 /* from octopress */
 .pre-code, html .gist .gist-file .gist-syntax .gist-highlight pre, .highlight code {
    font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace !important;
@@ -20,6 +27,7 @@ p {
    line-height: 1.45em;
    background: #002B36 url('/images/noise.png?1329687223') top left !important;
    color: #93A1A1 !important;
+   padding-bottom: 10px;
 }
 
 .navbar {
