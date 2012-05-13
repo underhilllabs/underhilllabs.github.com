@@ -25,7 +25,7 @@ Once you save the .bashrc file, you can source it with:
  . ~/.bashrc
 {% endhighlight %}
 
-and then check that it works with:
+and then test that it works with by running it.
 
 {% highlight bash %}
 sshnfsn
@@ -33,12 +33,12 @@ sshnfsn
 
 ## Aside: Public, Private, Protected Directories
 On a nfsn site, there are 3 directories in your /home folder. 
-+ The /home/public folder is your public facing directory. This is
-  your website's public Document Root. 
-+ The /home/private folder is your private folder where you can store
+*  The /home/public folder is your public facing directory. This is
+   your website's public Document Root. 
+* The /home/private folder is your private folder where you can store
   git repos, your ruby gems, anything private you need to use or back
   up.
-+ The /home/protected: let me know if find a use for this.
+* The /home/protected: let me know if find a use for this.
 
 ## Set Up Git on NFSN
 Once you are ssh'd into nfsn, cd into /home/private and create a
