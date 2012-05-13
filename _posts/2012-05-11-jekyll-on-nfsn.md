@@ -33,11 +33,14 @@ sshnfsn
 
 ## Aside: Public, Private, Protected Directories
 On a nfsn site, there are 3 directories in your /home folder. 
+
 *  The /home/public folder is your public facing directory. This is
    your website's public Document Root. 
+
 * The /home/private folder is your private folder where you can store
   git repos, your ruby gems, anything private you need to use or back
   up.
+
 * The /home/protected: let me know if find a use for this.
 
 ## Set Up Git on NFSN
