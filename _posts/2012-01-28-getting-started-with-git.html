@@ -1,0 +1,222 @@
+---
+layout: post
+title: Getting Started with Git
+tags: git
+category: Git
+---
+
+<div id="content">
+<div id="outline-container-1" class="outline-2">
+<div id="outline-container-1-1" class="outline-3">
+
+<h4 id="sec-1-1">Start Using Git on a Project</h4>
+<div class="outline-text-3" id="text-1-1">
+
+
+
+
+{% highlight bash %}
+# cd into project your working on
+cd <project>
+# initialize a git repository
+git init  
+# add all of the files to the repository
+git add .
+# now commit the files to repository
+git commit -m "My first commit message"
+{% endhighlight %}
+
+
+</div>
+
+<div id="outline-container-1-1-1" class="outline-4">
+
+<h4 id="sec-1-1-1">Later, check which files have changed and are out of sync</h4>
+<div class="outline-text-4" id="text-1-1-1">
+
+
+
+
+
+{% highlight bash %}
+# this will list changed files and new files
+git status
+# this will add the newly updated updated_file.php to the commit
+# staging area
+git add updated_file.php
+# commit changes with a good change message
+git commit -m "Fixed missing name bug in updated_file.php"
+{% endhighlight %}
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">Create a remote repository</h4>
+
+<div class="outline-text-4" id="text-1-1-2">
+
+
+
+
+{% highlight bash %}
+# ssh into server and create repository directory
+ssh boris@vladivostok.net
+mkdir myproject
+cd myproject
+# --bare option means this repository will be pushed to and pulled
+# from but never worked in directly (ie it will be a repository without working
+# files).  This caused me no small amount of confusion when I first
+# started using git.  
+git init --bare
+# exit out of distant vladivostok server
+exit
+# cd into local project
+cd &lt;project&gt;
+# add the remote repository
+git remote add vladivostok ssh:boris@vladivostok.net:myproject
+# now you can push a branch of the repository to the remote
+# repository, "master" is the default main branch in git
+git push vladivostok master
+{% endhighlight %}
+
+<p>
+Sweet! Now your code is backed up on a remote server.  In fact your
+code's entire history is on the remote server.  Everytime you make a
+commit on the local server, you can push that change to the remote
+server as well.
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">Good Git Introductions</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><a href="http://www.alistapart.com/articles/get-started-with-git/">Getting Started With Git</a></h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><a href="http://schacon.github.com/git/everyday.html">Everyday Git with 20 commands or so</a></h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">Git Next Level</h3>
+<div class="outline-text-3" id="text-1-3">
+
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><a href="http://think-like-a-git.net/epic.html">Think like a Git</a></h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><a href="http://www.linuxjournal.com/content/git-revision-control-perfected">Git: Revision Control Perfected</a></h4>
+<div class="outline-text-4" id="text-1-3-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><a href="http://cmurphycode.posterous.com/git-201-slightly-more-advanced">Git 201: Slightly More Advanced</a></h4>
+<div class="outline-text-4" id="text-1-3-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-4" class="outline-4">
+<h4 id="sec-1-3-4"><a href="http://danielmiessler.com/study/git/">A Git Primer</a></h4>
+<div class="outline-text-4" id="text-1-3-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-5" class="outline-4">
+<h4 id="sec-1-3-5"><a href="http://eagain.net/articles/git-for-computer-scientists/">Git for Computer Scientists</a></h4>
+<div class="outline-text-4" id="text-1-3-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-6" class="outline-4">
+<h4 id="sec-1-3-6"><a href="http://tomayko.com/writings/the-thing-about-git">The Thing About Git</a></h4>
+
+<div class="outline-text-4" id="text-1-3-6">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">Git Workflow</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+</div>
+
+<div id="outline-container-1-4-1" class="outline-4">
+
+<h4 id="sec-1-4-1"><a href="http://scottchacon.com/2011/08/31/github-flow.html">Github's Git Workflow</a></h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><a href="http://nvie.com/posts/a-successful-git-branching-model/">Git-flow a more complex workflow</a></h4>
+<div class="outline-text-4" id="text-1-4-2">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5">Github Stuff</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+</div>
+
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><a href="http://net.tutsplus.com/tutorials/other/getting-the-hang-of-github/">Getting the Hang of Github</a></h4>
+<div class="outline-text-4" id="text-1-5-1">
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
