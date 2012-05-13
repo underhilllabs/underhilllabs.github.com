@@ -3,6 +3,12 @@ html, body {
   /* background-color: #eee; */
   background-image: url(/assets/themes/twitter2/skin/stripe.png); background-repeat: repeat;
 }
+/* BWL added 5-13-2012 */
+p {
+   line-height: 1.6em;
+   font-size: 1em;
+   font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
 /* from octopress */
 .pre-code, html .gist .gist-file .gist-syntax .gist-highlight pre, .highlight code {
    font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace !important;
