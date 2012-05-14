@@ -1,7 +1,10 @@
 /* Override some defaults */
 html, body {
-  /* background-color: #eee; */
-  background-image: url(/assets/themes/twitter2/skin/stripe.png); background-repeat: repeat;
+   /* background-color: #eee; */
+   background-image: url(/assets/themes/twitter2/skin/stripe.png); background-repeat: repeat;
+   /* line-height: 1.6em; */
+   /* font-size: 1.2em; */
+   /* font-family: Georgia, Times, serif; */
 }
 /* BWL added 5-13-2012 */
 p {
@@ -25,8 +28,8 @@ h1, h2, h3 {
    padding: .8em !important;
    overflow-x: auto;
    line-height: 1.45em;
-   background: #002B36 url('/images/noise.png?1329687223') top left !important;
-   color: #93A1A1 !important;
+   /* background: #002B36 url('/images/noise.png?1329687223') top left !important; */
+   /* color: #93A1A1 !important; */
    padding-bottom: 10px;
 }
 
@@ -99,6 +102,5 @@ h1, h2, h3 {
 
 /* highlight ====================================*/
 .highlight pre  {
-   xxx0color: white;
-   background:  #002B36;
+   /* background:  #002B36; */
 }
