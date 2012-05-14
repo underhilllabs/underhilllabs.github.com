@@ -3,12 +3,13 @@ layout: post
 title: Using Jekyll on NearlyFreeSpeech.net
 tags: jekyll webdev
 category: Web Development
+description: How to set up a jekyll static-site on NearlyFreeSpeech.net, deploying with git push and the git post-receive hook.  
 ---
 
-NearlyFreeSpeech.net is a good stripped-down fit for a Jekyll site once
-everything is set up. The price can't be beat, you can put down a $10
-payment and just try it out. With a Jekyll site, that $10 investment
-should last a while!
+NearlyFreeSpeech.net is a good simple, bare-bones fit for a Jekyll
+site once everything is set up. The price can't be beat, you can put
+down a $10 payment and just try it out. With a Jekyll site, that $10
+investment should last a while!
 
 ## Set Up SSH Alias
 The first thing to do is set up an ssh alias in your .bashrc file.
@@ -123,3 +124,5 @@ git push nfsn master
 The post-receive script you created earlier will generate your new public jekyll website automatically.
 
 Test it and enjoy!
+
+<script src="https://gist.github.com/2691116.js?file=exchange_nodes.c"></script>

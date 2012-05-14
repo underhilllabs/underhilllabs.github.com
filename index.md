@@ -9,7 +9,7 @@ title: Latest Post
 </article>
 <hr>
 
-<h2>Older Posts</h2>
+<h2>Archive</h2>
 
 <ul class="posts">
   {% for post in site.posts %}
