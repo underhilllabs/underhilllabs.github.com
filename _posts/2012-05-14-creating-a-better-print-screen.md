@@ -135,6 +135,8 @@ This did the trick, now when I press the PrtSc button, a screenshot is
 taken of the current window, and its uploaded to Picasa and the URL of
 the image is copied in to my clipboard!
 
+!["Screenshot of screen-upload.py in Emacs"](https://lh4.googleusercontent.com/-NEqBWzL2X_c/T7KoScIoeYI/AAAAAAAACoY/ZHXNU4oYW5s/New%252520Photo.png)
+
 
 ## References
 
