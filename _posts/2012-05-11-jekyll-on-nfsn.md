@@ -125,4 +125,3 @@ The post-receive script you created earlier will generate your new public jekyll
 
 Test it and enjoy!
 
-<script src="https://gist.github.com/2691116.js?file=exchange_nodes.c"></script>
