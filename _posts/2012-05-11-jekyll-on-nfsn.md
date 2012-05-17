@@ -16,21 +16,21 @@ The first thing to do is set up an ssh alias in your .bashrc file.
 The hostname and username that are assigned at nfsn are generally
 pretty easy to forget, so I always create an alias for them, like:
 
-~~~
+`
 alias sshnfsn='username_sitename@ssh.yourhostname.nearlyfreespeech.net';
-~~~
+`
 
 Once you save the .bashrc file, you can source it with:
 
-~~~
- . ~/.bashrc
-~~~
+`
+. ~/.bashrc
+`
 
 and then test that it works with by running it.
 
-~~~
+`
 sshnfsn
-~~~
+`
 
 ## Aside: Public, Private, Protected Directories
 On a nfsn site, there are 3 directories in your /home folder. 
@@ -48,20 +48,20 @@ On a nfsn site, there are 3 directories in your /home folder.
 Once you are ssh'd into nfsn, cd into /home/private and create a
 directory for your git repositories and create a bare git repository
 for your site.
-~~~
+`
 cd /home/private
 mkdir git
 cd git
 mkdir mysite.git
 cd mysite.git
 git init --bare
-~~~
+`
 
 Now you have a bare git repository for your jekyll site. The following
 script will create a git post-receive hook, that will run every time
 you push to your git repository.
 
-~~~
+`
 #!/bin/sh
 
 REPONAME=mysite.git
@@ -79,13 +79,13 @@ rm -Rf $HOME/git/tmp_deploy/$REPONAME/.git
 rm -Rf $HOME/git/tmp_deploy/$REPONAME
 
 exit
-~~~
+`
 
 Be sure to chmod +x the file:
 
-~~~
+`
 chmod ug+x /home/private/git/mysite.git/post-receive
-~~~ 
+` 
 
 Now, every time you "git push" into nfsn this post-receive hook will
 auto-regenerate your jekyll site. 
@@ -95,31 +95,31 @@ Back on your home computer or wherever you are building your jekyll
 site, you need to create a git remote for your nsfn git
 repository.
 
-~~~
+`
 cd ~/projects/mysite.git
 # substitute in your username, sitename and nfsn hostname
 git remote add nfsn ssh://&lt;nsfnusername&gt;-&lt;sitename&gt;@ssh.&lt;hostname&gt;.nearlyfreespeech.net/home/private/git/mysite.git
-~~~
+`
 
 Now that you have a git remote set up for your jekyll site, you can
 Create a page in your jekyll "_post" directory.   
 Run "jekyll --server" to test it locally at http://localhost:4000.
 
-~~~
+`
 jekyll --server
-~~~ 
+` 
 
 If it looks good, add it to your git repository.
 
-~~~
+`
 git commit -am "new brilliant post!"
-~~~ 
+` 
 
 Next, push it to your website on nfsn.
 
-~~~
+`
 git push nfsn master
-~~~ 
+` 
 
 The post-receive script you created earlier will generate your new public jekyll website automatically.
 
