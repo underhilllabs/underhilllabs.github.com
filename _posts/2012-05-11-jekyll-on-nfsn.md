@@ -98,7 +98,7 @@ repository.
 ~~~
 cd ~/projects/mysite.git
 # substitute in your username, sitename and nfsn hostname
-git remote add nfsn ssh://<nsfnusername>-<sitename>@ssh.<hostname>.nearlyfreespeech.net/home/private/git/mysite.git
+git remote add nfsn ssh://&lt;nsfnusername&gt;-&lt;sitename&gt;@ssh.&lt;hostname&gt;.nearlyfreespeech.net/home/private/git/mysite.git
 ~~~
 
 Now that you have a git remote set up for your jekyll site, you can
