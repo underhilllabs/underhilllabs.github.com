@@ -14,6 +14,19 @@
             {% endfor %}
         </ul>
     </div>
+    <hr>
+    <div id="related-tags">
+      <h2>Related Posts by Category</h2>
+      <ul>
+        {% assign pages_list = site.pages %}
+        {% assign group = page.tags %}
+        {% include JB/pages_list %}
+      </ul>
+
+      {% assign posts_collate = site.tags.python %}
+      {% include JB/posts_collate %}
+    </div>
+
     <div class="pagination">
       <ul>
       {% if page.previous %}

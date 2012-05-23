@@ -20,7 +20,7 @@ h1, h2, h3 {
 }
 
 /* from octopress */
-.pre-code, html .gist .gist-file .gist-syntax .gist-highlight pre, .highlight code {
+p code, .pre-code, html .gist .gist-file .gist-syntax .gist-highlight pre, .highlight code {
    font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace !important;
    overflow: scroll;
    overflow-y: hidden;
