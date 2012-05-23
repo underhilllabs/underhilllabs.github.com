@@ -29,7 +29,7 @@ If you are unfamiliar at all with sql, first back up your drupal database.
 drush sql-dump --result-file=/path/to/dump-file.sql
 ```
 
-You could also dump just backup the comment table. (The '~' says to save it
+You could also dump just the comment table. (The '~' says to save it
 in your home directory.) 
 
 ```
@@ -44,10 +44,9 @@ drush sql-dump --result-file=~/comment-table.sql --tables-list=comment
 drush sqlq "desc comment"
 ```
 
-(__drush sqlq__ is the short form of __drush sql-query__)
+( __drush sqlq__ is the short form of __drush sql-query__)
 
-### You could also use drush sql-cli
-
+You could also use drush sql-cli to view the comment table:
 
 <pre>
 $ drush sql-cli
@@ -126,80 +125,5 @@ I'll keep you posted of my progress on that. In the meantime, you can try using 
 
 ```
 drush dump --result-file=~/drupal-backup.sql
-```
-
-
-### Spam Gets By ...
-From time to time, despite precautions, spammers get by the Drupal filters and
-captchas.  Or perhaps, the problem gets put in your lap and you have
-the pleasure of deleting thousands of spam comments.  
-
-Drupal doesn't provide many resources, unless you want to click
-"select all" and "delete selected comments" 50 comments at a time,
-page after page.
-
-### If you SQL, Drush to the Rescue.
-
-One easy solution is to use `drush sqlq` to delete the comments.
-
-+ First take a look at the comment table:
-
-
-```
-drush sqlq "desc comment"
-```
-
-+ Next take a look at the comments:
-
-```
-drush sqlq "select subject,cid from comment "
-```
-
-+ You can show comments from the last 30 days with the following.
-
-The created field is stored as a unix timestamp (seconds since the
-Unix Epoch), so to get last month timestamp, subtract 3600*24*30
-(seconds in an hour)*(24 hours in a day)*(30 days): 
-
-```
-drush sqlq "select subject,cid from comment where created > unix_timestamp(now())-3600*24*30"
-```
-
-### Before you start Deleting anything...
-
-If you are unfamiliar with sql, first back up the database.
-
-```
-drush sql-dump --result-file=/path/to/dump-file.sql
-```
-
-You could also dump just the comment table. (The '~' says to save it
-in your home directory.) 
-
-```
-drush sql-dump --result-file=~/comment-table.sql --tables-list=comment
-```
-
-
-### If you know the range of spam comment ids.
-
-+ You can give sql a range of comment ids:
-
-Show the range of comments:
-
-```
-drush sqlq "select subject,cid from comment where cid > 3013 and cid < 3134 "
-```
-
-Delete the range of comments:
-
-```
-drush sqlq "delete from comment where cid > 3013 and cid < 3134 "
-```
-
-### Show comments, group by name of commenter
-
-```
-drush sqlq "select subject,name,cid from comment where cid > 300 group by name"
 ```
 
