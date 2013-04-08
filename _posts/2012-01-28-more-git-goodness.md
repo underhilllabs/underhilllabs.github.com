@@ -3,6 +3,7 @@ layout: post
 title: More Git Goodness
 tags: git
 category: Git
+published: false
 ---
 
 ## Git Show
@@ -33,11 +34,10 @@ git config --local color.ui auto
 
 This command adds the following to your .gitconfig file:
 
-{% highlight yaml %}
+```yaml
     [color]
        ui = auto
-{% endhighlight %}
-
+```
 
 
 ## Git Bisect
