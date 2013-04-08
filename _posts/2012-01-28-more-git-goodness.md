@@ -13,23 +13,23 @@ published: false
 
 This will show the commit as a diff.
 
-{% highlight bash %}
+```bash
 git show HEAD^^^
-{% endhighlight %}
+```
 
 Also you can use the commit's sha1 as an argument 
-{% highlight bash %}
+```bash
 git show 62114826e3f
-{% endhighlight %}
+```
 
 
 
 
 ## Set git to output color
 
-{% highlight bash %}
+```bash
 git config --local color.ui auto
-{% endhighlight %}
+```
 
 
 This command adds the following to your .gitconfig file:
