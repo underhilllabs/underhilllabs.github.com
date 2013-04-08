@@ -44,7 +44,7 @@ This command adds the following to your .gitconfig file:
 
 Try to find where in the version history a bug first appeared.
 
-{% highlight bash %}
+```bash
 # start bisect
 git bisect start
 # set good point: there was no bug here, this can be a tag, SHA1, or HEAD~18 ...
@@ -60,4 +60,4 @@ git bisect bad
 # when you've found the bad commit, reset the branch with
 git biset reset
 
-{% endhighlight %}
+```
