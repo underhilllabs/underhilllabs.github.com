@@ -34,7 +34,7 @@ git config --local color.ui auto
 This command adds the following to your .gitconfig file:
 
 {% highlight yaml %}
-[color]
+    [color]
        ui = auto
 {% endhighlight %}
 
